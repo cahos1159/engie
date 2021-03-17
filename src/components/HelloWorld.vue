@@ -2,7 +2,11 @@
 <div>
   <form>
     <label for="in">Input numbers separated by space </label>
-    <input type="text" v-model="currentInput" name="in"/>
+    <input
+        type="text"
+        v-on:input="currentInput = $event.target.value"
+        name="in"
+      />
   </form>
   <button v-on:click="closerToZero()">Launch</button>
   <p>{{ res }}</p>
