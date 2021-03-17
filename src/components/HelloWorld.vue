@@ -17,32 +17,42 @@
 export default {
   name: "HelloWorld",
   props: {
-    msg: String
+    msg: String,
   },
-   data() {
+  data() {
     return {
-      res: '',
-      currentInput: ''
+      //result of the function and what is displayed on once the function is done
+      res: "",
+      //Input for the function
+      currentInput: "",
     };
   },
-   methods: {
+  methods: {
+    //function which take a list of valur provided by the input field
+    //return a value to diplay, the closest to zero in the list given as input
     closerToZero() {
-      const arr = this.currentInput.split(" ").filter(elem => (parseInt(elem) == elem));
+      //Filter used to clear any none number instances in the given list
+      const arr = this.currentInput
+        .split(" ")
+        .filter((elem) => parseInt(elem) == elem);
+      //checking if the list of value is empty or null
       if (arr.length === 0) {
-         this.res = 0;
-      }
-      else{
+        this.res = 0;
+      } else {
         this.res = arr[0];
-        arr.forEach(element => {
-          if ( Math.abs(element) < Math.abs(this.res) || Number(element) === Math.abs(this.res) ) {
-            this.res = element
+        //Iterating throught the values and selecting the closest to zero as we go.
+        arr.forEach((element) => {
+          if (
+            Math.abs(element) < Math.abs(this.res) ||
+            Number(element) === Math.abs(this.res)
+          ) {
+            this.res = element;
           }
         });
       }
-    }
-  }
+    },
+  },
 };
-
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
